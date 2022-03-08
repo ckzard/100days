@@ -10,7 +10,7 @@ def pass_gen():
     num_numbers = int(input("How many numbers do you want: \n"))
 
     # pass_length = num_letters + num_symbols + num_numbers
-    
+    #find index of character
     for num in range(1, num_letters):
         rando = random.randint(0, len(letters) - 1)
         final_pass.append(letters[rando])
@@ -31,4 +31,4 @@ def pass_gen():
         shuffled += str(x)
     
     print(shuffled)
-pass_gen()
+pass_gen()  
