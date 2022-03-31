@@ -13,31 +13,35 @@ class QuizBrain:
 
     def still_has_questions(self):
        # return a boolean if the question list still has questions
-        return self.question_number < len(self.question_list)  
-    
+        return self.question_number < len(self.question_list)
+
+    def check_answer(self, answer):
+
+        if answer == self.current_question.answer:
+            print("You got it right!")
+            self.score += 1
+            return True
+        else:
+            print("NAh you wrong G!")
+            return False
+
     def next_question(self):
 
         keep_going = self.still_has_questions()
 
-        while keep_going:
-            
-            self.current_question = self.question_list[self.question_number]
-            
-            self.question_number += 1
-            q_text = html.unescape(self.current_question.text)
-            show_question = input(f"Q.{self.question_number}: {q_text} Please enter True or False: \n")
+        if keep_going:
+            print('still have questins')
+        else:
+            return False
+               
 
-            if show_question == self.current_question.answer:
-                print("You got it right!")
-                self.score += 1
-            else:
-                print("NAh you wrong G!")
-            
-            keep_going = self.still_has_questions()
+        self.current_question = self.question_list[self.question_number]
         
-        print("\n")
-        print("Thats the end of the quiz here are your results:")
-        print(f"{self.score} / {len(self.question_list)}")
+        self.question_number += 1
+        q_text = html.unescape(self.current_question.text)
+
+        return f"Q.{self.question_number}: {q_text} Please enter True or False: \n"
+        
 
         
     
